@@ -1,0 +1,118 @@
+[
+  {
+    "query_id": "q01",
+    "question": "SGD là gì và các bước cơ bản của thuật toán gồm những gì?",
+    "query_type": "keyword",
+    "ground_truth_source": "Bai5.pdf",
+    "ground_truth_page": 5,
+    "ground_truth_section": "Phương pháp SGD",
+    "relevant_chunk_ids": [],
+    "expected_answer": "SGD chọn mẫu dữ liệu, tính gradient, cập nhật tham số theo learning rate và lặp đến khi hội tụ."
+  },
+  {
+    "query_id": "q02",
+    "question": "Vì sao SGD có thể hội tụ chậm khi hàm mục tiêu thay đổi không đồng đều theo các hướng?",
+    "query_type": "semantic",
+    "ground_truth_source": "Bai5.pdf",
+    "ground_truth_page": 8,
+    "ground_truth_section": "Vấn đề với SGD",
+    "relevant_chunk_ids": [],
+    "expected_answer": "Thuật toán dao động qua lại theo hướng dốc và tiến chậm theo hướng thoải."
+  },
+  {
+    "query_id": "q03",
+    "question": "AdaGrad làm thay đổi tốc độ học theo từng trọng số như thế nào?",
+    "query_type": "keyword",
+    "ground_truth_source": "Bai5.pdf",
+    "ground_truth_page": 22,
+    "ground_truth_section": "AdaGrad",
+    "relevant_chunk_ids": [],
+    "expected_answer": "Mỗi trọng số có learning rate riêng, tỉ lệ nghịch với tổng bình phương gradient trước đó."
+  },
+  {
+    "query_id": "q04",
+    "question": "Những kỹ thuật nào trong bài giảng được nêu để chống overfitting?",
+    "query_type": "semantic",
+    "ground_truth_source": "Bai5.pdf",
+    "ground_truth_page": 42,
+    "ground_truth_section": "Dừng sớm",
+    "relevant_chunk_ids": [],
+    "expected_answer": "Tài liệu đề cập early stopping, dropout và data augmentation.",
+    "ground_truth_pages": [
+      42,
+      44,
+      52
+    ]
+  },
+  {
+    "query_id": "q05",
+    "question": "RNN phù hợp với dạng dữ liệu nào và vì sao thứ tự đầu vào quan trọng?",
+    "query_type": "semantic",
+    "ground_truth_source": "Bai8_Recurrent neural network.pdf",
+    "ground_truth_page": 5,
+    "ground_truth_section": "Dữ liệu dạng sequence",
+    "relevant_chunk_ids": [],
+    "expected_answer": "RNN xử lý sequence/time-series, nơi thứ tự các phần tử ảnh hưởng ý nghĩa."
+  },
+  {
+    "query_id": "q06",
+    "question": "Trong mô hình RNN, trạng thái st được tính từ những thành phần nào?",
+    "query_type": "keyword",
+    "ground_truth_source": "Bai8_Recurrent neural network.pdf",
+    "ground_truth_page": 14,
+    "ground_truth_section": "Mô hình RNN",
+    "relevant_chunk_ids": [],
+    "expected_answer": "st = f(U xt + W st-1), kết hợp đầu vào hiện tại và trạng thái trước."
+  },
+  {
+    "query_id": "q07",
+    "question": "Vanishing gradient ảnh hưởng như thế nào đến khả năng học thông tin xa của RNN?",
+    "query_type": "semantic",
+    "ground_truth_source": "Bai8_Recurrent neural network.pdf",
+    "ground_truth_page": 19,
+    "ground_truth_section": "BPTT",
+    "relevant_chunk_ids": [],
+    "expected_answer": "Gradient ở các trạng thái xa có thể tiến về 0 khiến RNN khó học phụ thuộc dài hạn."
+  },
+  {
+    "query_id": "q08",
+    "question": "Ba cổng trong LSTM là gì và vai trò của cell state?",
+    "query_type": "multi_hop",
+    "ground_truth_source": "Bai8_Recurrent neural network.pdf",
+    "ground_truth_page": 24,
+    "ground_truth_section": "Mô hình LSTM",
+    "relevant_chunk_ids": [],
+    "expected_answer": "Forget, input, output gate điều khiển thông tin; cell state giúp lưu thông tin dài hạn.",
+    "ground_truth_pages": [
+      24,
+      25
+    ]
+  },
+  {
+    "query_id": "q09",
+    "question": "GRU khác LSTM ở điểm nào theo bài giảng?",
+    "query_type": "semantic",
+    "ground_truth_source": "Bai8_Recurrent neural network.pdf",
+    "ground_truth_page": 27,
+    "ground_truth_section": "GRU",
+    "relevant_chunk_ids": [],
+    "expected_answer": "GRU không có cell state riêng, kết hợp cổng forget và output thành update gate.",
+    "ground_truth_pages": [
+      27,
+      28,
+      29,
+      30,
+      31
+    ]
+  },
+  {
+    "query_id": "q10",
+    "question": "Nêu các ứng dụng RNN được đề cập trong tài liệu.",
+    "query_type": "keyword",
+    "ground_truth_source": "Bai8_Recurrent neural network.pdf",
+    "ground_truth_page": 10,
+    "ground_truth_section": "Ứng dụng RNN",
+    "relevant_chunk_ids": [],
+    "expected_answer": "Speech-to-text, phân loại cảm xúc, dịch máy, nhận diện video và dự đoán đột quỵ tim."
+  }
+]

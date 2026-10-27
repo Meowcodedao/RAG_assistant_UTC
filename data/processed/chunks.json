@@ -1,0 +1,1778 @@
+[
+  {
+    "chunk_id": "bai5_p002_c000",
+    "text": "(Phần 2)\nBài 5:\nHuấn luyện mạng\nNội dung\n• Các giải thuật tối ưu cho mạng nơ-ron\n• Chiến lược thay đổi tốc độ học\n• Một số kỹ thuật chống overfitting\n• Làm giàu dữ liệu (data augmentation)\n• Lựa chọn siêu tham số\n• Kỹ thuật kết hợp nhiều mô hình (ensemble)\n• Kỹ thuật học tái sử dụng (transfer learning)",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 2,
+    "pages": [
+      1,
+      2
+    ],
+    "chapter": "Bài 5",
+    "section": "Nội dung",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 303
+  },
+  {
+    "chunk_id": "bai5_p004_c001",
+    "text": "Các giải thuật tối ưu\nPhương pháp SGD\n(Stochastic Gradient Descent)",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 4,
+    "pages": [
+      3,
+      4
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Phương pháp SGD",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 67
+  },
+  {
+    "chunk_id": "bai5_p005_c002",
+    "text": "• Stochastic Gradient Descent (SGD) là một biến thể của thuật\ntoán Gradient Descent, sử dụng trong việc tối ưu hóa mô hình\nhọc máy.\nCác bước cơ bản của SGD:\n1. Khởi tạo tham số: Bắt đầu với một bộ tham số ngẫu nhiên.\n2. Chọn ngẫu nhiên một mẫu dữ liệu: Thay vì sử dụng toàn bộ dữ\nliệu, SGD chọn ngẫu nhiên một mẫu (hoặc một vài mẫu) từ tập dữ\nliệu.",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 5,
+    "pages": [
+      5
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Phương pháp SGD",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 348
+  },
+  {
+    "chunk_id": "bai5_p005_c003",
+    "text": "Thay vì sử dụng toàn bộ dữ\nliệu, SGD chọn ngẫu nhiên một mẫu (hoặc một vài mẫu) từ tập dữ\nliệu. 3. Tính gradient: Tính gradient của hàm mất mát đối với các tham\nsố, sử dụng mẫu dữ liệu đã chọn.\n4. Cập nhật tham số: Cập nhật tham số dựa trên gradient và một hệ\nsố học (learning rate).\n5. Lặp lại: Lặp lại các bước trên cho đến khi mô hình hội tụ (khi sự\nthay đổi của hàm mất mát nhỏ hơn một ngưỡng nào đó).",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 5,
+    "pages": [
+      5
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Phương pháp SGD",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 405
+  },
+  {
+    "chunk_id": "bai5_p006_c004",
+    "text": "SGD có nhiều ưu điểm so với Gradient Descent truyền thống,\nnhư:\n• Tốc độ: SGD nhanh hơn vì chỉ sử dụng một mẫu dữ liệu tại\nmỗi bước, thay vì toàn bộ tập dữ liệu.\n• Tránh local minima: SGD có thể tránh bị kẹt ở các local\nminima do sự ngẫu nhiên trong việc chọn mẫu dữ liệu.\n• Dễ dàng điều chỉnh tham số: SGD thường dễ dàng điều\nchỉnh các tham số hơn trong thực tế.",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 6,
+    "pages": [
+      6
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Phương pháp SGD",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 363
+  },
+  {
+    "chunk_id": "bai5_p006_c005",
+    "text": "dữ liệu.\n• Dễ dàng điều chỉnh tham số: SGD thường dễ dàng điều\nchỉnh các tham số hơn trong thực tế. SGD cũng có nhược điểm, như dao động mạnh quanh điểm\ntối ưu và cần lựa chọn hệ số học phù hợp.",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 6,
+    "pages": [
+      6
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Phương pháp SGD",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 194
+  },
+  {
+    "chunk_id": "bai5_p007_c006",
+    "text": "Vấn đề với SGD\n• Điều gì sẽ xảy ra khi hàm mục tiêu thay đổi nhanh theo\nmột chiều và thay đổi chậm theo chiều khác?\n• Khi đó SGD sẽ làm việc như thế nào?\nHàm mục tiêu có số điều kiện lớn: tỉ lệ giữa giá trị riêng\nlớn nhất và giá trị riêng nhỏ nhất của ma trận Hessian là\nlớn.",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 7,
+    "pages": [
+      7
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Vấn đề với SGD",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 275
+  },
+  {
+    "chunk_id": "bai5_p008_c007",
+    "text": "Thuật toán hội tụ rất chậm, nhảy từ bên này qua bên kia\nbề mặt hàm mục tiêu\nHàm mục tiêu có số điều kiện lớn: tỉ lệ giữa giá trị riêng\nlớn nhất và giá trị riêng nhỏ nhất của ma trận Hessian là\nlớn.",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 8,
+    "pages": [
+      8
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Vấn đề với SGD",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 197
+  },
+  {
+    "chunk_id": "bai5_p009_c008",
+    "text": "• Hessian nói lên điều gì?\nMa trận Hessian (đối với hàm khả vi bậc hai) mô tả độ cong\ncủa hàm theo các hướng khác nhau quanh một điểm\n(thường là điểm cực tiểu).\n+ Giá trị riêng lớn → độ cong lớn → hàm “dốc” mạnh theo\nhướng đó.\n+ Giá trị riêng nhỏ → độ cong nhỏ → hàm “thoải” theo\nhướng đó",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 9,
+    "pages": [
+      9
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Vấn đề với SGD",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 288
+  },
+  {
+    "chunk_id": "bai5_p011_c009",
+    "text": "• Tỉlệgiữa giá trịriêng lớn nhất và giá trịriêng nhỏnhất của\nma trận Hessian?\nTỉ lệ này thường gọi là condition number (đặc biệt với\nHessian xác định dương).\nNếu tỉlệrất lớn:\n+ Hàm cong rất không đều:\n- Có hướng thì dốc đứng\n- Có hướng thì gần như phẳng\n+ Hình dung bề mặt hàm giống một cái thung lũng rất dài và\nhẹp",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 11,
+    "pages": [
+      10,
+      11
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Vấn đề với SGD",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 316
+  },
+  {
+    "chunk_id": "bai5_p012_c010",
+    "text": "• Hệ quả trong tối ưu hóa\nĐiều này gây ra nhiều vấn đề thực tế:\n+ Gradient Descent:\n- Dễ dao động theo hướng dốc\n- Nhưng tiến rất chậm theo hướng phẳng\n- Cần learning rate nhỏ → hội tụ chậm\n+ Nhạy cảm với nhiễu: Một nhiễu nhỏtrong dữliệu hay\ngradient có thểlàm nghiệm thay đổi đáng kể",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 12,
+    "pages": [
+      12
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Vấn đề với SGD",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 284
+  },
+  {
+    "chunk_id": "bai5_p014_c011",
+    "text": "• Chuyện gì xảy ra nếu\nhàm mục tiêu có cực tiểu\nđịa phương hoặc điểm\nyên ngựa (saddle point)?\n• Gradient bằng 0, thuật\ntoán SGD bị tắc\n• Điểm yên ngựa thường\nxuất hiện với các hàm\nmục tiêu nhiều biến",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 14,
+    "pages": [
+      13,
+      14
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Vấn đề với SGD",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 199
+  },
+  {
+    "chunk_id": "bai5_p015_c012",
+    "text": "• SGD xấp xỉ gradient theo\ntừng lô dữ liệu nên\nthường rất nhiễu",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 15,
+    "pages": [
+      15
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Vấn đề với SGD",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 63
+  },
+  {
+    "chunk_id": "bai5_p016_c013",
+    "text": "SGD + momentum\n• Xây dựng đại lượng “vận tốc” bằng trung bình dịch\nchuyển của gradients\n• Lực ma sát rho thường bằng 0.9 hoặc 0.99.\n• Tại thời điểm ban đầu rho có thể thấp hơn do hướng di\nchuyển chưa rõ ràng, ví dụ rho = 0.5",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 16,
+    "pages": [
+      16
+    ],
+    "chapter": "Chưa rõ",
+    "section": "SGD + momentum",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 224
+  },
+  {
+    "chunk_id": "bai5_p017_c014",
+    "text": "• SGD + momentum có thể phát biểu theo nhiều cách\nkhác nhau nhưng chúng tương đương nhau và đều\nđưa ra cùng một dãy x",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 17,
+    "pages": [
+      17,
+      18
+    ],
+    "chapter": "Chưa rõ",
+    "section": "SGD + momentum",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 117
+  },
+  {
+    "chunk_id": "bai5_p019_c015",
+    "text": "Nesterov Momentum\n𝜌: hệ số momentum (thường 0.9).\n𝛼: learning rate.\nMomentum giúp “làm mượt” đường\nđi, tránh bị kẹt ở các dao động mạnh.\nNM: không tính gradient tại vị trí\nhiện tại, mà tính ở \"vị trí ước\nlượng tiếp theo\".",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 19,
+    "pages": [
+      19
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Nesterov Momentum",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 221
+  },
+  {
+    "chunk_id": "bai5_p020_c016",
+    "text": "• Thường người ta muốn\ntính theo\n• Đặt\nvà\nchuyển về",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 20,
+    "pages": [
+      20
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Nesterov Momentum",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 51
+  },
+  {
+    "chunk_id": "bai5_p021_c017",
+    "text": "So sánh Momentum và Nesterov Momentum\n• Momentum: như quảbóng lăn, chỉbiết dựa vào gia tốc trước đó.\n• Nesterov: giống như người chạy biết nhìn trước và điều chỉnh\nbước chân khi sắp vượt quá điểm tối ưu.\nKết quả:\n• Hội tụ nhanh hơn.\n• Chính xác hơn khi đến gần cực tiểu.",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 21,
+    "pages": [
+      21
+    ],
+    "chapter": "Chưa rõ",
+    "section": "So sánh Momentum và Nesterov Momentum",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 270
+  },
+  {
+    "chunk_id": "bai5_p022_c018",
+    "text": "AdaGrad\n• Mỗi trọng số có tốc độ học riêng: “Per-parameter\nlearning rates” hoặc “adaptive learning rates”\n• Tốc độ học của mỗi trọng số tỉ lệ nghịch với tổng bình\nphương độ lớn đạo hàm riêng của hàm mục tiêu đối\nvới trọng số đó ở các bước trước",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 22,
+    "pages": [
+      22
+    ],
+    "chapter": "Chưa rõ",
+    "section": "AdaGrad",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 244
+  },
+  {
+    "chunk_id": "bai5_p024_c019",
+    "text": "• Q1: Điều gì xảy ra với AdaGrad?\nTốc độ di chuyển theo hướng dốc được hãm dần\nTốc độ di chuyển theo hướng thoải được tăng tốc",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 24,
+    "pages": [
+      23,
+      24
+    ],
+    "chapter": "Chưa rõ",
+    "section": "AdaGrad",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 126
+  },
+  {
+    "chunk_id": "bai5_p026_c020",
+    "text": "• Q2: Bước di chuyển thay đổi như thế nào khi số vòng\nlặp tăng dần?\nTiến tới 0",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 26,
+    "pages": [
+      25,
+      26
+    ],
+    "chapter": "Chưa rõ",
+    "section": "AdaGrad",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 78
+  },
+  {
+    "chunk_id": "bai5_p028_c021",
+    "text": "RMSProp\nAdam đơn giản\nCó thể xem như là RMSProp + Momentum",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 28,
+    "pages": [
+      27,
+      28
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Adam đơn giản",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 58
+  },
+  {
+    "chunk_id": "bai5_p029_c022",
+    "text": "Adam đầy đủ\n• Hiệu chỉnh bias để thuật toán đỡ bị ảnh hưởng bởi giá trị\ncủa beta1 và beta2. Đồng thời giúp cho thuật toán ổn định\nhơn trong quá trình warm up tại một số bước đầu tiên khi cả\nhai moment đều khởi tạo bằng 0.\n• Chứng minh chi tiết có thể tham khảo tại Tài liệu tham khảo\nsố 2 hoặc trong bài báo gốc\n• Adam với beta1 = 0.9, beta2 = 0.999, và learning_rate = 1e-",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 29,
+    "pages": [
+      29
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Adam đầy đủ",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 373
+  },
+  {
+    "chunk_id": "bai5_p029_c023",
+    "text": "tham khảo\nsố 2 hoặc trong bài báo gốc\n• Adam với beta1 = 0.9, beta2 = 0.999, và learning_rate = 1e- 3 hoặc 5e-4 là tham số mặc định tốt cho nhiều mô hình!",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 29,
+    "pages": [
+      29
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Adam đầy đủ",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 154
+  },
+  {
+    "chunk_id": "bai5_p031_c024",
+    "text": "First-order optimization\nSecond-order optimization\n• Sử dụng ma trận Hessian",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 31,
+    "pages": [
+      30,
+      31
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Second-order optimization",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 76
+  },
+  {
+    "chunk_id": "bai5_p032_c025",
+    "text": "• Khai triển Taylor\n• Điểm cực tiểu:\n• Không tốt cho DL (do độ phức tạp tính nghịch đảo là\nO(n^3))\n• Quasi-Newton (BGFS)",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 32,
+    "pages": [
+      32
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Second-order optimization",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 120
+  },
+  {
+    "chunk_id": "bai5_p033_c026",
+    "text": "SOTA optimizers\n• NAdam = Adam + NAG (Nesterov Accelerated Gradient)\n• RAdam (Rectified Adam)\n• LookAhead (Zhang et al., 2019)\n• Ranger = RAdam + LookAhead",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 33,
+    "pages": [
+      33
+    ],
+    "chapter": "Chưa rõ",
+    "section": "SOTA optimizers",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 155
+  },
+  {
+    "chunk_id": "bai5_p034_c027",
+    "text": "Trong thực tế\n• Adam là lựa chọn mặc định tốt trong nhiều\ntrường hợp\n• SGD+Momentum thường tốt hơn Adam nhưng\ncần phải tinh chỉnh tốc độ học và lên chiến\nlược thay đổi tốc độ học hợp lý",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 34,
+    "pages": [
+      34
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Trong thực tế",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 185
+  },
+  {
+    "chunk_id": "bai5_p036_c028",
+    "text": "Chiến lược thay đổi tốc độ học\nTốc độ học\n• Tốc độ học là siêu tham số (hyperparameter) của tất\ncả các thuật toán tối ưu SGD, SGD+Momentum,\nAdagrad, RMSProp, Adam…\n• Thường bắt đầu với giá trị lớn và giảm dần theo thời\ngian",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 36,
+    "pages": [
+      35,
+      36
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Tốc độ học",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 223
+  },
+  {
+    "chunk_id": "bai5_p037_c029",
+    "text": "Chiến lược thay đổi tốc độ học\n• Step: Thay đổi tốc\nđộ học tại một số\nthời điểm cố định.\n• Ví dụ: với ResNets\ncó thể giảm lnr 10\nlần tại các epochs\n30, 60 và 90.",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 37,
+    "pages": [
+      37
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Chiến lược thay đổi tốc độ học",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 161
+  },
+  {
+    "chunk_id": "bai5_p040_c030",
+    "text": "• Giảm theo cosin\n• Giảm tuyến tính\n• Tỉ lệ nghịch căn\nbậc hai số epoch:",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 40,
+    "pages": [
+      38,
+      39,
+      40
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Chiến lược thay đổi tốc độ học",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 72
+  },
+  {
+    "chunk_id": "bai5_p042_c031",
+    "text": "Một số kỹ thuật chống overfitting\nDừng sớm\n• Dừng huấn luyện khi độ chính xác trên tập val bắt đầu\ngiảm",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 42,
+    "pages": [
+      41,
+      42
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Dừng sớm",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 103
+  },
+  {
+    "chunk_id": "bai5_p043_c032",
+    "text": "Điều khiển quá trình huấn luyện\nMột số ràng buộc hay sử dụng:",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 43,
+    "pages": [
+      43
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Điều khiển quá trình huấn luyện",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 61
+  },
+  {
+    "chunk_id": "bai5_p044_c033",
+    "text": "Dropout\n• Trong quá trình tính toán tiến (forward pass), ngẫu\nnhiên thiết lập đầu ra một số nơ-ron về 0.\n• Xác suất drop thường là 0.5",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 44,
+    "pages": [
+      44
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Dropout",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 134
+  },
+  {
+    "chunk_id": "bai5_p045_c034",
+    "text": "• Ví dụ quá trình tính toán tiến của một mạng nơ-ron 3\nlớp sử dụng dropout",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 45,
+    "pages": [
+      45
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Dropout",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 74
+  },
+  {
+    "chunk_id": "bai5_p046_c035",
+    "text": "Tác dụng dropout\n• Ép mạng nơ-ron phải học biểu diễn dư thừa\n(redundant representation)",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 46,
+    "pages": [
+      46
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Tác dụng dropout",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 87
+  },
+  {
+    "chunk_id": "bai5_p047_c036",
+    "text": "• Dropout khi huấn luyện có thể diễn giải như huấn\nluyện đồng thời nhiều mô hình khác nhau\n• Mỗi kiểu drop nơ-ron tương ứng với một mô hình\n• Một lớp kết nối đầy đủ với 4096 nơ-ron sẽ có 24096 ~\n101233 phương án drop\n• … chỉ có cỡ 1082 nguyên tử trong toàn bộ vũ trụ!",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 47,
+    "pages": [
+      47
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Tác dụng dropout",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 267
+  },
+  {
+    "chunk_id": "bai5_p048_c037",
+    "text": "Lúc suy diễn\n• Dropout làm kết quả đầu ra ngẫu nhiên\n•\n• Cần phải lấy trung bình tất cả các kết quả\n• Nhưng tính tích phân này là không thể…",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 48,
+    "pages": [
+      48
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Lúc suy diễn",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 140
+  },
+  {
+    "chunk_id": "bai5_p049_c038",
+    "text": "• Xấp xỉ tích phân\n• Ví dụ xét một nơ-ron\n• Lúc suy diễn:\n• Lúc huấn luyện:",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 49,
+    "pages": [
+      49
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Lúc suy diễn",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 75
+  },
+  {
+    "chunk_id": "bai5_p050_c039",
+    "text": "• Lúc suy diễn tất cả nơ-ron đều hoạt động. Vì vậy phải\nscale đầu ra của mỗi nơ-ron:\nĐầu ra khi suy diễn = kỳ vọng đầu ra khi huấn luyện\n➔ Nhân với tỉ lệ keeping rate",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 50,
+    "pages": [
+      50
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Lúc suy diễn",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 166
+  },
+  {
+    "chunk_id": "bai5_p051_c040",
+    "text": "Lời khuyên khi dùng dropout\n• Tỷlệdropout p nên ở khoảng [0.2, 0.5] . Nếu p quá nhỏ thì\nkhông có tác dụng chống overfitting, tuy nhiên nếu p quá\nlớn thì gần như loại bỏ layer đấy và có thể dẫn đến\nunderfitting.\n• Nên dùng model lớn, phức tạp hơn vì ta có dropout chống\noverfitting.\n• Dropout chỉ nên dùng cho Fully Connected layer, ít khi\nđược dùng cho ConvNet layer",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 51,
+    "pages": [
+      51
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Lời khuyên khi dùng dropout",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 366
+  },
+  {
+    "chunk_id": "bai5_p051_c041",
+    "text": "Dropout chỉ nên dùng cho Fully Connected layer, ít khi\nđược dùng cho ConvNet layer • Hệ số p ở các layer nên tỉ lệ với số lượng node trong FC\nlayer đó.",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 51,
+    "pages": [
+      51
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Lời khuyên khi dùng dropout",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 151
+  },
+  {
+    "chunk_id": "bai5_p053_c042",
+    "text": "Làm giàu dữ liệu\nData Augmentation\nFlip ngang",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 53,
+    "pages": [
+      52,
+      53
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Flip ngang",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 45
+  },
+  {
+    "chunk_id": "bai5_p054_c043",
+    "text": "Crop ngẫu nhiên và scale ảnh\n• Ví dụ ResNet:\n1. Chọn ngẫu nhiên L\ntrong khoảng [256, 480]\n2. Resize ảnh để chiều\nnhỏ nhất bằng L\n3. Crop ngẫu nhiên vùng\nkích thước 224 x 224",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 54,
+    "pages": [
+      54
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Crop ngẫu nhiên và scale ảnh",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 173
+  },
+  {
+    "chunk_id": "bai5_p056_c044",
+    "text": "Thay đổi màu sắc\nCác phép biến đổi khác…\n- Tịnh tiến\n- Xoay ảnh\n- stretching\n- shearing\n- lens distortions…",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 56,
+    "pages": [
+      55,
+      56
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Các phép biến đổi khác…",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 107
+  },
+  {
+    "chunk_id": "bai5_p058_c045",
+    "text": "Mixup\nMột số thư viện\n1. Albumentations\nhttps://github.com/albumentations-team/albumentations\n2. Imgaug\nhttps://github.com/aleju/imgaug\n3. Augmentor\nhttps://github.com/mdbloice/Augmentor",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 58,
+    "pages": [
+      57,
+      58
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Một số thư viện",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 186
+  },
+  {
+    "chunk_id": "bai5_p060_c046",
+    "text": "Lựa chọn siêu tham số\nSiêu tham số\n• Kiến trúc mạng\n• Tốc độ học, tham số trong chiến lược thay đổi tốc độ\nhọc, thuật toán tối ưu\n• Các hệ số điều khiển (L2 weight decay, drop rate)",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 60,
+    "pages": [
+      59,
+      60
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Siêu tham số",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 181
+  },
+  {
+    "chunk_id": "bai5_p062_c047",
+    "text": "Random Search vs Grid Search\nKỹ thuật kết hợp nhiều mô hình\n(model ensemble)",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 62,
+    "pages": [
+      61,
+      62
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Kỹ thuật kết hợp nhiều mô hình",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 76
+  },
+  {
+    "chunk_id": "bai5_p063_c048",
+    "text": "Model Ensembles\n• Huấn luyện nhiều mô hình độc lập\n• Khi test kết hợp kết quả nhiều mô hình\n• Độ chính xác thường tăng 2%",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 63,
+    "pages": [
+      63
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Model Ensembles",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 121
+  },
+  {
+    "chunk_id": "bai5_p064_c049",
+    "text": "• Thay vì huấn luyện nhiều mô hình độc lập, có thể dùng\nnhiều snapshot của cùng một mô hình trong quá trình\nhuấn luyện",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 64,
+    "pages": [
+      64
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Model Ensembles",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 118
+  },
+  {
+    "chunk_id": "bai5_p065_c050",
+    "text": "Kỹ thuật học tái sử dụng\n(transfer learning)",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 65,
+    "pages": [
+      65
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Kỹ thuật học tái sử dụng",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 44
+  },
+  {
+    "chunk_id": "bai5_p066_c051",
+    "text": "Transfer learning\nHuấn luyện mạng trên một tập dữ liệu lớn có sẵn, sau\nđó huấn luyện tiếp với tập dữ liệu của mình",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 66,
+    "pages": [
+      66,
+      67
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Transfer learning",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 114
+  },
+  {
+    "chunk_id": "bai5_p068_c052",
+    "text": "More tips and tricks\n• Machine Learning Yearning by Andrew Ng\nhttps://d2wvfoqc9gyqzf.cloudfront.net/content/uploads/20\n18/09/Ng-MLY01-13.pdf",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 68,
+    "pages": [
+      68
+    ],
+    "chapter": "Chưa rõ",
+    "section": "More tips and tricks",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 140
+  },
+  {
+    "chunk_id": "bai5_p069_c053",
+    "text": "Tài liệu tham khảo\n1. Bài giảng biên soạn dựa trên khóa cs231n của\nStanford, bài giảng số 8:\nhttp://cs231n.stanford.edu\n2. Adam:\nhttps://towardsdatascience.com/adam-latest-trends-indeep-learning-optimization-6be9a291375c\n3. Stanford lecture note:\nhttp://cs231n.github.io/neural-networks-3/",
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "page": 69,
+    "pages": [
+      69
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Tài liệu tham khảo",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 289
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p001_c000",
+    "text": "Học sâu và ứng dụng\nMạng hồi quy\nRecurrent neural network",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 1,
+    "pages": [
+      1
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Học sâu và ứng dụng",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 57
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p002_c001",
+    "text": "Recurrent Neural Network là gì?\n• Deep learning có 2 mô hình lớn\n• Convolutional Neural Network (CNN) cho bài toán có input là ảnh\n• Recurrent neural network (RNN) cho bài toán dữliệu dạng chuỗi (sequence)",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 2,
+    "pages": [
+      2
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Recurrent Neural Network là gì?",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 205
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p003_c002",
+    "text": "• Bài toán: Cần phân loại hành động của người trong video, input là\nvideo 30s, output là phân loại hành động, ví dụ: đứng, ngồi, chạy,\nđánh nhau, bắn súng, ...\n• Khi xử lý video ta hay gặp khái niệm FPS (frame per second) tức là\nbao nhiêu frame (ảnh) mỗi giây. Ví dụ 1 FPS với video 30s tức là lấy\nra từ video 30 ảnh, mỗi giây một ảnh để xử lý.",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 3,
+    "pages": [
+      3
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Recurrent Neural Network là gì?",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 344
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p003_c003",
+    "text": "(ảnh) mỗi giây. Ví dụ 1 FPS với video 30s tức là lấy\nra từ video 30 ảnh, mỗi giây một ảnh để xử lý. • Ta dùng 1 FPS cho video input ở bài toán trên, tức là lấy ra 30 ảnh\ntừ video, ảnh 1 ở giây 1, ảnh 2 ở giây 2,... ảnh 30 ở giây 30. Bây giờ\ninput là 30 ảnh: ảnh 1, ảnh 2, ..., ảnh 30 và output là phân loại hành\nđộng.",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 3,
+    "pages": [
+      3
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Recurrent Neural Network là gì?",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 317
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p004_c004",
+    "text": "• Nhận xét:\n• Các ảnh có thứ tự: ảnh 1 xảy ra trước ảnh 2, ảnh 2 xảy ra trước ảnh 3, ...\nNếu ta đảo lộn các ảnh thì có thểthay đổi nội dung của video.\n• Ta có thể dùng CNN để phân loại 1 ảnh trong 30 ảnh trên, nhưng rõ ràng là\n1 ảnh không thể mô tả được nội dung của cả video.\nVí dụ: Cảnh người cướp điện thoại, nếu ta chỉ dùng 1 ảnh là người đấy cầm",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 4,
+    "pages": [
+      4
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Recurrent Neural Network là gì?",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 350
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p004_c005",
+    "text": "nội dung của cả video.\nVí dụ: Cảnh người cướp điện thoại, nếu ta chỉ dùng 1 ảnh là người đấy cầm điện thoại lúc cướp xong thì ta không thể biết được cả hành động cướp.\nCần một mô hình mới có thể giải quyết được bài toán với input là sequence\n(chuỗi ảnh 1->30)\nRecurrent Neural Network (RNN) ra đời.",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 4,
+    "pages": [
+      4
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Recurrent Neural Network là gì?",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 300
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p005_c006",
+    "text": "• Dữ liệu dạng sequence:\n• Dữ liệu có thứ tự như các ảnh tách từ video ở trên được gọi là sequence,\ntime-series data (xuất hiện đều đặn theo thứtựthời gian).\n• Trong bài toán dự đoán đột quỵ tim cho bệnh nhân bằng các dữ liệu tim\nmạch khám trước đó. Input là dữ liệu của những lần khám trước đó, ví dụ i1\nlà lần khám tháng 1, i2 là lần khám tháng 2, ..., i8 là lần khám tháng 8. Các",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 5,
+    "pages": [
+      5
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Recurrent Neural Network là gì?",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 382
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p005_c007",
+    "text": "trước đó, ví dụ i1\nlà lần khám tháng 1, i2 là lần khám tháng 2, ..., i8 là lần khám tháng 8. Các dữliệu (i1, i2, …, i8) được gọi là sequence data hoặc time-series data. RNN\nsẽ học từ input và dự đoán xem bệnh nhân có bị đột quy tim hay không.\n• Ví dụ khác là trong bài toán dịch tự động với input là 1 câu, ví dụ “Tôi yêu\nViệt Nam\" thì vị trí các từ và sự xắp xếp cực kì quan trọng đến nghĩa của\ncâu và dữ liệu input [’Tôi’, ’yêu’, ’Việt’, ’Nam’] được gọi là sequence data.",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 5,
+    "pages": [
+      5
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Recurrent Neural Network là gì?",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 473
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p005_c008",
+    "text": "trọng đến nghĩa của\ncâu và dữ liệu input [’Tôi’, ’yêu’, ’Việt’, ’Nam’] được gọi là sequence data. Trong bài toán xử lý ngôn ngữ (NLP) thì không thể xử lý cả câu được và\nngười ta tách ra từng từ làm input, giống như trong video người ta tách ra\ncác ảnh (frame) làm input.",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 5,
+    "pages": [
+      5
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Recurrent Neural Network là gì?",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 270
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p007_c009",
+    "text": "• Phân loại bài toán RNN:\n• One to one: mẫu bài toán cho Neural Network (NN) và Convolutional Neural\nNetwork (CNN), 1 input và 1 output, ví dụvới bài toán phân loại ảnh MNIST\ninput là ảnh và output là ảnh đấy là sốnào.",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 7,
+    "pages": [
+      6,
+      7
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Recurrent Neural Network là gì?",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 218
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p008_c010",
+    "text": "• One to many: bài toán có 1 input nhưng nhiều output, ví dụ với bài toán\ncaption cho ảnh, input là 1 ảnh nhưng output là nhiều chữ mô tả cho ảnh đó\ndưới dạng một câu.",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 8,
+    "pages": [
+      8
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Recurrent Neural Network là gì?",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 167
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p009_c011",
+    "text": "• Many to one: bài toán có nhiều input nhưng chỉ có 1 output, ví dụ bài toán\nphân loại hành động trong video, input là nhiều ảnh (frame) tách ra từ video,\nouptut là hành động trong video.\n• Many to many: bài toán có nhiều input và nhiều output, ví dụbài toán dịch\ntừtiếng Anh sang tiếng Việt, input là 1 câu gồm nhiều chữ: \"I love Vietnam\"",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 9,
+    "pages": [
+      9
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Recurrent Neural Network là gì?",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 339
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p009_c012",
+    "text": "ví dụbài toán dịch\ntừtiếng Anh sang tiếng Việt, input là 1 câu gồm nhiều chữ: \"I love Vietnam\" và output cũng là 1 câu gồm nhiều chữ\"Tôi yêu Việt Nam\". Đểý là độdài\nsequence của input và output có thểkhác nhau.",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 9,
+    "pages": [
+      9
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Recurrent Neural Network là gì?",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 210
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p010_c013",
+    "text": "• Ứng dụng của RNN:\n• Về cơ bản, khi thấy sequence data hay time-series data và muốn áp dụng\ndeep learning thì có thểnghĩ ngay đến RNN. Dưới đây là một số ứng dụng\ncủa RNN:\n• Speech to text: Chuyển giọng nói sang text.\n• Sentiment classification: Phân loại bình luận của người dùng, tích cực hay tiêu cực.\n• Machine translation: Bài toán dịch tự động giữa các ngôn ngữ.",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 10,
+    "pages": [
+      10
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Recurrent Neural Network là gì?",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 369
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p010_c014",
+    "text": "người dùng, tích cực hay tiêu cực.\n• Machine translation: Bài toán dịch tự động giữa các ngôn ngữ. • Video recognition: Nhận diện hành động trong video.\n• Heart attack: Dự đoán đột quỵ tim.",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 10,
+    "pages": [
+      10
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Recurrent Neural Network là gì?",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 189
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p011_c015",
+    "text": "Mô hình RNN\n• Bài toán: Nhận diện hành động trong video 30s. Đây là dạng bài\ntoán many to one trong RNN, tức nhiều input và 1 output.\n• Tách input video thành 30 ảnh (mỗi giây một ảnh). Các ảnh sẽ được cho\nqua CNN huấn luyện để lấy ra các feature (feature extraction) vector có kích\nthước n*1. Vector tương ứng với ảnh ở giây thứ i là xi.",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 11,
+    "pages": [
+      11
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Mô hình RNN",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 338
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p011_c016",
+    "text": "feature (feature extraction) vector có kích\nthước n*1. Vector tương ứng với ảnh ở giây thứ i là xi. • Output là vector có kích thước d*1 (d là số lượng hành động cần phân loại),\nsoftmax function được sử dụng như trong bài phân loại ảnh.",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 11,
+    "pages": [
+      11
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Mô hình RNN",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 236
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p013_c017",
+    "text": "• Mô hình RNN cho bài toán\n• Mô hình có 30 input và 1 output, các input được cho vào model đúng với thứ\ntự ảnh trong video x1, x2, …, x30.\n• Mỗi hình tròn được gọi là 1 state, state t có input là xt và st−1 (output của\nstate trước), output là st = f(U∗xt + W∗st−1). f là activation function và thường\nlà Tanh hoặc ReLU.",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 13,
+    "pages": [
+      12,
+      13
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Mô hình RNN",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 319
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p013_c018",
+    "text": "state trước), output là st = f(U∗xt + W∗st−1). f là activation function và thường\nlà Tanh hoặc ReLU. • Có thể thấy st mang cả thông tin từ state trước (st−1) và input của state hiện\ntại => st giống như memory nhớ các đặc điểm của các input từ x1 đến xt.",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 13,
+    "pages": [
+      12,
+      13
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Mô hình RNN",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 253
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p014_c019",
+    "text": "• Ta thấy là ở mỗi state các hệ số W, U\nlà giống nhau nên model có thể\nđược viết lại thành:\n•\nxi là vector có kích thước n*1,\n•\nsi là vector có kích thước m*1,\n•\nyi là vector có kích thước d*1.\n•\nU là ma trận có kích thước m*n,\n•\nW là ma trận có kích thước m*m\n•\nV là ma trận có kích thước d*m.\n𝑠0 = 0, 𝑠𝑡= 𝑓(𝑈∗𝑥𝑡+ 𝑊∗𝑠𝑡−1) với 𝑡≥0\nො𝑦= 𝑔(𝑉∗𝑠30)",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 14,
+    "pages": [
+      14
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Mô hình RNN",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 343
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p015_c020",
+    "text": "• Loss function\n• Loss function của cả mô hình bằng tổng loss của mỗi output, tuy nhiên ở mô\nhình trên chỉ có 1 output và là bài toán phân loại nên categorical cross\nentropy loss sẽ được sử dụng",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 15,
+    "pages": [
+      15
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Mô hình RNN",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 194
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p017_c021",
+    "text": "• Backpropagation Through Time (BPTT)\n• Có 3 tham số ta cần phải tìm là W, U, V. Để thực hiện gradient descent, ta\ncần tính:\n𝜕𝐿\n𝜕𝑈,\n𝜕𝐿\n𝜕𝑉,\n𝜕𝐿\n𝜕𝑊\n• Ta có:\nDo 𝑠30 = 𝑓(𝑊∗𝑠29 + 𝑈∗𝑥30) có 𝑠29 phụ thuộc vào vào 𝑊.",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 17,
+    "pages": [
+      16,
+      17
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Mô hình RNN",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 207
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p018_c022",
+    "text": "• Áp dụng công thức (𝑓𝑥∗𝑔(𝑥))′= 𝑓′ 𝑥∗𝑔𝑥+ 𝑓𝑥∗𝑔′(𝑥), ta có:\n• Ta có:\n𝜕𝑠30\n𝜕𝑊=\n𝜕𝑠30\n′\n𝜕𝑊+\n𝜕𝑠30\n𝜕𝑠29 ∗\n𝜕𝑠29\n𝜕𝑊, trong đó\n𝜕𝑠30\n′\n𝜕𝑊 là đạo hàm của 𝑠30 với W khi\ncoi 𝑠29 là hằng với W.\n• Tương tự, trong biểu thức 𝑠29 có 𝑠28 phụ thuộc vào W, 𝑠28 có 𝑠27 phụ thuộc\nvào W, ... nên áp dụng công thức trên và chain rule:",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 18,
+    "pages": [
+      18
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Mô hình RNN",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 308
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p019_c023",
+    "text": "• Giảsửactivation là tanh function, 𝑠𝑡= tanh(𝑈∗𝑥𝑡+ 𝑊∗𝑠𝑡−1)\n• Ta có: 𝑠𝑗< 1, 𝑊< 1 ➔ ở những state xa thì\n𝜕𝑠30\n𝜕𝑠𝑖≈0 hay\n𝜕𝐿\n𝜕𝑊≈0. Đây là\nhiện tượng triệt tiêu gradient (vanishing gradient).\n• Ta có thể thấy, các state càng xa ở trước đó thì càng bị vanishing gradient và\ncác hệ số không được update với các frame ở xa. Hay nói cách khác là RNN",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 19,
+    "pages": [
+      19
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Mô hình RNN",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 340
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p019_c024",
+    "text": "bị vanishing gradient và\ncác hệ số không được update với các frame ở xa. Hay nói cách khác là RNN không học được từ các thông tin ở trước đó xa do vanishing gradient.\n=> Long short term memory (LSTM) ra đời.",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 19,
+    "pages": [
+      19
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Mô hình RNN",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 207
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p020_c025",
+    "text": "Long short term memory (LSTM)\n• Về lý thuyết, RNN có thể mang thông tin từ các layer trước đến các\nlayer sau, nhưng thực tế là thông tin chỉ mang được qua một số\nlượng state nhất định, sau đó thì sẽ bị vanishing gradient, hay nói\ncách khác là model chỉ học được từ các state gần nó => short term\nmemory.",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 20,
+    "pages": [
+      20
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Long short term memory (LSTM)",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 303
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p021_c026",
+    "text": "• Bài toán là dự đoán từ tiếp theo trong đoạn văn.\n• Đoạn, \"Mặt trời mọc ở hướng ...\", ta có thể chỉ sử dụng các từ trước trong câu\nđể đoán là đông.\n• Với đoạn, \"Tôi là người Việt Nam. Tôi đang sống ở nước ngoài. Tôi có thể nói\ntrôi chảy tiếng ... \" thì rõ ràng là chỉ sử dụng từ trong câu đấy hoặc câu trước\nlà không thể dự đoán được từ cần điền là Việt.",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 21,
+    "pages": [
+      21
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Long short term memory (LSTM)",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 355
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p021_c027",
+    "text": "ràng là chỉ sử dụng từ trong câu đấy hoặc câu trước\nlà không thể dự đoán được từ cần điền là Việt. Ta cần các thông tin từ state ở trước đó rất xa => cần long term memory mà\nRNN không làm được => Cần một mô hình mới để giải quyết vấn đề này\n=> Long short term memory (LSTM) ra đời.",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 21,
+    "pages": [
+      21
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Long short term memory (LSTM)",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 281
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p022_c028",
+    "text": "Mô hình LSTM\n• Ở state thứ t của mô hình LSTM:\n• Output: ct, ht, ta gọi c là cell state, h là hidden state.\n• Input: ct−1, ht−1, xt. Trong đó, xt là input ở state thứ t của model. ct−1, ht−1 là\noutput của layer trước. h đóng vai trò khá giống như s ở RNN, trong khi c là\nđiểm mới của LSTM.\n➔ Sử dụng thêm “cell” có bộ nhớ để tránh hiện tượng triệt tiêu gradient.",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 22,
+    "pages": [
+      22
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Mô hình LSTM",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 362
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p024_c029",
+    "text": "• Kí hiệu , tanh ý là bước đấy dùng sigma, tanh activation function.\n• Phép nhân ở đây là element-wise multiplication, phép cộng là cộng ma trận.\n• ft, it, ot tương ứng với forget gate, input gate và output gate.\n• Forget gate: 𝑓𝑡= 𝜎(𝑈𝑓∗𝑥𝑡+ 𝑊𝑓∗ℎ𝑡−1 + 𝑏𝑓)\n• Input gate: 𝑖𝑡= 𝜎(𝑈𝑖∗𝑥𝑡+ 𝑊𝑖∗ℎ𝑡−1 + 𝑏𝑖)\n• Output gate: 𝑜𝑡= 𝜎(𝑈𝑜∗𝑥𝑡+ 𝑊𝑜∗ℎ𝑡−1 + 𝑏𝑜)",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 24,
+    "pages": [
+      23,
+      24
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Mô hình LSTM",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 338
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p024_c030",
+    "text": "𝑊𝑓∗ℎ𝑡−1 + 𝑏𝑓)\n• Input gate: 𝑖𝑡= 𝜎(𝑈𝑖∗𝑥𝑡+ 𝑊𝑖∗ℎ𝑡−1 + 𝑏𝑖)\n• Output gate: 𝑜𝑡= 𝜎(𝑈𝑜∗𝑥𝑡+ 𝑊𝑜∗ℎ𝑡−1 + 𝑏𝑜) • Nhận xét: 0 < 𝑓𝑡, 𝑖𝑡, 𝑜𝑡< 1; 𝑏𝑓, 𝑏𝑖, 𝑏𝑜 là các hệ số bias; hệ số W, U giống như RNN\n•\nǁ𝑐𝑡= tanh(𝑈𝑐∗𝑥𝑡+ 𝑊𝑐∗ℎ𝑡−1 + 𝑏𝑐), giống như tính st trong CNN\n• 𝑐𝑡= 𝑓𝑡∗𝑐𝑡−1 + 𝑖𝑡∗ǁ𝑐𝑡, forget gate quyết định xem cần lấy bao nhiêu từ cell state\ntrước và input gate sẽ quyết định lấy bao nhiêu từ input của state và hidden layer\ncủa layer trước",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 24,
+    "pages": [
+      23,
+      24
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Mô hình LSTM",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 426
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p025_c031",
+    "text": "• ℎ𝑡= 𝑜𝑡∗tanh(𝑐𝑡), output gate quyết định xem cần lấy bao nhiêu từ cell state để\ntrở thành output của hidden state. Ngoài ra, ht cũng được dùng để tính ra output\nyt cho state t.\n• Nhận xét:\n•\nℎ𝑡, ǁ𝑐𝑡 khá giống với RNN nên model có short\nterm memory.\n•\n𝑐𝑡giống như một băng chuyền ở trên mô\nhình RNN, thông tin nào cần quan trọng và\ndùng ở sau sẽ được gửi vào và dùng khi",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 25,
+    "pages": [
+      25
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Mô hình LSTM",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 370
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p025_c032",
+    "text": "chuyền ở trên mô\nhình RNN, thông tin nào cần quan trọng và\ndùng ở sau sẽ được gửi vào và dùng khi cần => có thể mang thông tin từ đi xa =>\nlong term memory. Do đó, mô hình LSTM có\ncả short term memory và long term memory.",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 25,
+    "pages": [
+      25
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Mô hình LSTM",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 221
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p027_c033",
+    "text": "LSTM chống vanishing gradient\nGated Recurrent Unit (GRU)\n• Không dùng “cell state” riêng biệt, ghép chung với hidden state\n• Kết hợp cổng “forget” và “output” thành cổng “update”\nzt\nUpdate Gate\nrt\nReset Gate\nht\nxt\nht-1\nxt\nht-1\nht-1\nW\nWz\nWr\nxt\nh’t\n.\nσ là hàm sigmoid\nWz là các trọng số của update gate\nĐầu là là số có giá trị từ 0 đến 1\nCổng Reset Gate xác định mức độ trạng thái",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 27,
+    "pages": [
+      26,
+      27
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Gated Recurrent Unit (GRU)",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 378
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p027_c034",
+    "text": "số của update gate\nĐầu là là số có giá trị từ 0 đến 1\nCổng Reset Gate xác định mức độ trạng thái ẩn trước đó sẽ bị quên.\nKhi rt gần 0 thì mạng quên quá khứ",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 27,
+    "pages": [
+      26,
+      27
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Gated Recurrent Unit (GRU)",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 155
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p029_c035",
+    "text": "W\nxt\nht\n𝑡\nℎ= tanh 𝑊\n𝑥𝑡\nℎ𝑡−1\nht-1\nrt\nReset Gate\nW\nWr\nxt\nh’t\n𝑟𝑡= 𝜎𝑊𝑟\n𝑥𝑡\nℎ𝑡−1\n+ 𝑏𝑡\n𝑡\nℎ′ = tanh 𝑊\n𝑥𝑡\n𝑟𝑡⨀ℎ𝑡−1\nht-1\n.\nxt\nht-1",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 29,
+    "pages": [
+      28,
+      29
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Gated Recurrent Unit (GRU)",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 119
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p030_c036",
+    "text": "zt\nrt\nUpdate Gate\nReset Gate\nxt\nht-1\nW\nWr\nxt\nh’t\n𝑟𝑡= 𝜎𝑊𝑟\n𝑥𝑡\nℎ𝑡−1\n+ 𝑏𝑡\n𝑡\nℎ′ = tanh 𝑊\n𝑥𝑡\n𝑟𝑡⨀ℎ𝑡−1\n𝑧𝑡= 𝜎𝑊𝑧\n𝑥𝑡\nℎ𝑡−1\n+ 𝑏𝑧\nWz\nht-1\n.\nxt\nht-1",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 30,
+    "pages": [
+      30
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Gated Recurrent Unit (GRU)",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 133
+  },
+  {
+    "chunk_id": "bai8_recurrent_neural_network_p031_c037",
+    "text": "ht\nxt\nht-1\nW\nWz\nWr\nxt\nh’t\n𝑟𝑡= 𝜎𝑊𝑟\n𝑥𝑡\nℎ𝑡−1\n+ 𝑏𝑡\n𝑡\nℎ′ = tanh 𝑊\n𝑥𝑡\n𝑟𝑡⨀ℎ𝑡−1\n𝑧𝑡= 𝜎𝑊𝑧\n𝑥𝑡\nℎ𝑡−1\n+ 𝑏𝑧\n𝑡\nℎ𝑡= 1 −𝑧𝑡⨀ℎ𝑡−1 + 𝑧𝑡⨀ℎ′\nht-1\n.\nxt\nht-1",
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "page": 31,
+    "pages": [
+      31
+    ],
+    "chapter": "Chưa rõ",
+    "section": "Gated Recurrent Unit (GRU)",
+    "source_url": null,
+    "strategy": "recursive",
+    "char_count": 132
+  }
+]

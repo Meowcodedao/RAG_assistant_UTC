@@ -1,0 +1,22 @@
+[
+  {
+    "document_id": "bai5",
+    "document_title": "Bài 5: Huấn luyện mạng nơ-ron",
+    "author": "Admin",
+    "year": null,
+    "course": "Huấn luyện mạng nơ-ron",
+    "source": "Bai5.pdf",
+    "source_url": null,
+    "total_pages": 69
+  },
+  {
+    "document_id": "bai8_recurrent_neural_network",
+    "document_title": "Bai8_Recurrent neural network",
+    "author": "Phạm Đình Phong",
+    "year": null,
+    "course": "Mạng hồi quy (RNN)",
+    "source": "Bai8_Recurrent neural network.pdf",
+    "source_url": null,
+    "total_pages": 31
+  }
+]
